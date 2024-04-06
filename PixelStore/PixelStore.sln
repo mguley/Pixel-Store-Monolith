@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelStore.Domain", "PixelStore.Domain\PixelStore.Domain.csproj", "{9CE0BB6D-9704-42DC-8512-D3104C7D987A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelStore.Application", "PixelStore.Application\PixelStore.Application.csproj", "{3DECC330-57D5-4203-8CAE-AC9454EB5B5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelStore.Infrastructure", "PixelStore.Infrastructure\PixelStore.Infrastructure.csproj", "{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CE0BB6D-9704-42DC-8512-D3104C7D987A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE0BB6D-9704-42DC-8512-D3104C7D987A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE0BB6D-9704-42DC-8512-D3104C7D987A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE0BB6D-9704-42DC-8512-D3104C7D987A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DECC330-57D5-4203-8CAE-AC9454EB5B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DECC330-57D5-4203-8CAE-AC9454EB5B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DECC330-57D5-4203-8CAE-AC9454EB5B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DECC330-57D5-4203-8CAE-AC9454EB5B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
