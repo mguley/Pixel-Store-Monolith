@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelStore.Application", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelStore.Infrastructure", "PixelStore.Infrastructure\PixelStore.Infrastructure.csproj", "{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelStore.WebApi", "PixelStore.WebApi\PixelStore.WebApi.csproj", "{1F5B97C7-D938-4A97-BD7F-750D914FAC5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4EC952C-9614-4B00-93AB-9DFE6FF09A64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F5B97C7-D938-4A97-BD7F-750D914FAC5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F5B97C7-D938-4A97-BD7F-750D914FAC5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F5B97C7-D938-4A97-BD7F-750D914FAC5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F5B97C7-D938-4A97-BD7F-750D914FAC5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
