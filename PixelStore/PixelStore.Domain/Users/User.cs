@@ -8,6 +8,13 @@ namespace PixelStore.Domain.Users;
 public class User : BaseEntity
 {
     /// <summary>
+    /// Private constructor used by EF Core for proxy generation and materialization.
+    /// </summary>
+    private User()
+    {
+    }
+    
+    /// <summary>
     /// Initializes a new instance of the User class with specified details.
     /// </summary>
     /// <param name="guid">The globally unique identifier for the user.</param>
@@ -24,6 +31,7 @@ public class User : BaseEntity
     
     /// <summary>
     /// Gets the globally unique identifier for the user.
+    /// This identifier is used to uniquely distinguish each product within the system.
     /// </summary>
     public Guid Guid { get; private set; }
     
@@ -40,5 +48,4 @@ public class User : BaseEntity
     /// <summary>
     /// Gets the user's email address.
     /// </summary>
-    public Email Email { get; private set; }
-}
+    public Email Email { get; private set; } }
