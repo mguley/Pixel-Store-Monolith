@@ -8,5 +8,5 @@ public abstract class BaseEntity
     /// <summary>
     /// Gets the unique identifier for the entity.
     /// </summary>
-    protected int Id { get; init; }
+    public int Id { get; init; }
 }
