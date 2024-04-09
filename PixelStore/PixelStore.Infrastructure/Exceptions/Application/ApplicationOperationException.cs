@@ -1,4 +1,4 @@
-namespace PixelStore.Infrastructure.Exceptions;
+namespace PixelStore.Infrastructure.Exceptions.Application;
 
 /// <summary>
 /// Represents application errors that occur within the system.

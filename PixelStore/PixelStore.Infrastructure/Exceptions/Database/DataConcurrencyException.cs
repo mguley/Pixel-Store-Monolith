@@ -1,4 +1,4 @@
-namespace PixelStore.Infrastructure.Exceptions;
+namespace PixelStore.Infrastructure.Exceptions.Database;
 
 /// <summary>
 /// Represents errors that occur due to concurrency conflicts within the system.
