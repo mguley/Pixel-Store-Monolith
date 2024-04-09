@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PixelStore.Domain.Abstractions;
-using PixelStore.Infrastructure.Exceptions;
+using PixelStore.Infrastructure.Exceptions.Application;
+using PixelStore.Infrastructure.Exceptions.Database;
 
 namespace PixelStore.Infrastructure;
 
