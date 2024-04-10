@@ -1,0 +1,41 @@
+services:
+  
+  pixel-store-api:
+    container_name: pixel_api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      - pixel-store-db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5029
+      - ASPNETCORE_HTTPS_PORTS=7047
+    ports:
+      - "5029:5029"
+      - "7047:7047"
+    networks:
+      pixel_network:
+        ipv4_address: 217.45.0.3
+  
+  pixel-store-db:
+    container_name: pixel_db
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=pixel
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./docker/containers/database:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      pixel_network:
+        ipv4_address: 217.45.0.2
+        
+networks:
+  pixel_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 217.45.0.0/16
