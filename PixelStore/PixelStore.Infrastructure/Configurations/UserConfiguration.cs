@@ -13,7 +13,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     /// Configures the entity model for the User entity using the Fluent API.
     /// </summary>
     /// <param name="builder">Provides a simple API for configuring an EntityType.</param>
-    /// <exception cref="NotImplementedException"></exception>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.ToTable(name: "users");
@@ -28,21 +27,21 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasColumnName(name: "guid");
 
         builder.Property(user => user.FirstName)
-            .HasMaxLength(100)
+            .HasMaxLength(maxLength: 100)
             .HasConversion(
                 firstName => firstName.Value,
                 value => new FirstName(value))
             .HasColumnName(name: "first_name");
 
         builder.Property(user => user.LastName)
-            .HasMaxLength(100)
+            .HasMaxLength(maxLength: 100)
             .HasConversion(
                 lastName => lastName.Value,
                 value => new LastName(value))
             .HasColumnName(name: "last_name");
 
         builder.Property(user => user.Email)
-            .HasMaxLength(100)
+            .HasMaxLength(maxLength: 100)
             .HasConversion(
                 email => email.Value,
                 value => new Email(value))
