@@ -1,4 +1,5 @@
 using PixelStore.Domain.Abstractions;
+using AddressItem = PixelStore.Domain.Address.Address;
 
 namespace PixelStore.Domain.Users;
 
@@ -8,9 +9,9 @@ namespace PixelStore.Domain.Users;
 public class User : BaseEntity
 {
     /// <summary>
-    /// Private constructor used by EF Core for proxy generation and materialization.
+    /// Constructor used by EF Core for proxy generation and materialization.
     /// </summary>
-    private User()
+    public User()
     {
     }
     
@@ -28,24 +29,30 @@ public class User : BaseEntity
         LastName = lastName;
         Email = email;
     }
-    
+
     /// <summary>
     /// Gets the globally unique identifier for the user.
     /// This identifier is used to uniquely distinguish each product within the system.
     /// </summary>
-    public Guid Guid { get; private set; }
-    
+    public Guid Guid { get; private set; } = Guid.NewGuid();
+
     /// <summary>
     /// Gets the user's first name.
     /// </summary>
-    public FirstName FirstName { get; private set; }
-    
+    public FirstName FirstName { get; private set; } = new FirstName(Value: string.Empty);
+
     /// <summary>
     /// Gets the user's last name.
     /// </summary>
-    public LastName LastName { get; private set; }
-    
+    public LastName LastName { get; private set; } = new LastName(Value: string.Empty);
+
     /// <summary>
     /// Gets the user's email address.
     /// </summary>
-    public Email Email { get; private set; } }
+    public Email Email { get; private set; } = new Email(Value: string.Empty);
+
+    /// <summary>
+    /// List of assigned addresses per user.
+    /// </summary>
+    public virtual ICollection<AddressItem> Addresses { get; init; } = new List<AddressItem>();
+}
