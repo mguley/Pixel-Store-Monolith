@@ -10,6 +10,7 @@ public sealed record Currency
     internal static readonly Currency None = new(code: "");
     
     public static readonly Currency Usd = new(code: "USD");
+    public static readonly Currency Eur = new(code: "EUR");
 
     /// <summary>
     /// Initializes a new instance of the Currency class.
