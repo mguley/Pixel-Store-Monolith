@@ -5,7 +5,7 @@ using PixelStore.Infrastructure.Exceptions.User;
 namespace PixelStore.Infrastructure.Repositories;
 
 /// <summary>
-/// Represents a repository for managing <see cref="User"/> entities.
+/// Represents a repository for managing <see cref="User"/> entity.
 /// </summary>
 internal sealed class UserRepository : Repository<User>, IUserRepository
 {
