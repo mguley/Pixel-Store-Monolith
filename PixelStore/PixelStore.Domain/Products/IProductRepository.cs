@@ -3,7 +3,7 @@
 namespace PixelStore.Domain.Products;
 
 /// <summary>
-/// Represents the repository interface for product entities.
+/// Represents the repository interface for product entity.
 /// </summary>
 public interface IProductRepository : IRepository<Product>
 {

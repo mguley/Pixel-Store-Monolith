@@ -5,7 +5,7 @@ using PixelStore.Infrastructure.Exceptions.Product;
 namespace PixelStore.Infrastructure.Repositories;
 
 /// <summary>
-/// Represents a repository for managing <see cref="Product"/> entities.
+/// Represents a repository for managing <see cref="Product"/> entity.
 /// </summary>
 internal sealed class ProductRepository : Repository<Product>, IProductRepository
 {
@@ -32,10 +32,10 @@ internal sealed class ProductRepository : Repository<Product>, IProductRepositor
     /// <summary>
     /// Updates an existing product.
     /// </summary>
-    /// <param name="entity"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <param name="entity">A product to be updated.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>True if success.</returns>
+    /// <exception cref="ProductOperationException">Thrown if the product is not found.</exception>
     public async Task<bool> UpdateAsync(Product entity, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(entity);
