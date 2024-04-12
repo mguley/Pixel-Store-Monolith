@@ -5,7 +5,7 @@ namespace PixelStore.WebApi.Extensions;
 /// <summary>
 /// Provides extension methods for <see cref="IHost"/> to perform common startup tasks.
 /// </summary>
-public static class HostExtensions
+internal static class HostExtensions
 {
     /// <summary>
     /// Applies any pending migrations for the context on startup, and creates the database if it doesn't already exist.

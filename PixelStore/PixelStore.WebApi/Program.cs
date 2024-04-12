@@ -8,6 +8,10 @@ builder.Services.AddInfrastructure(configuration: builder.Configuration);
 
 var app = builder.Build();
 
-await app.MigrateDatabaseAsync<ApplicationDbContext>();
+if (app.Environment.IsDevelopment())
+{
+    await app.MigrateDatabaseAsync<ApplicationDbContext>();
+    await app.SeedData();
+}
 
 app.Run();

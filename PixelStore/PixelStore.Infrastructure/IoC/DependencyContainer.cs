@@ -1,7 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PixelStore.Domain.Abstractions;
+using PixelStore.Domain.Products;
+using PixelStore.Domain.Users;
 using PixelStore.Infrastructure.Exceptions.Application;
+using PixelStore.Infrastructure.Repositories;
 
 namespace PixelStore.Infrastructure.IoC;
 
@@ -41,6 +45,10 @@ public static class DependencyContainer
                 throw new InvalidOperationException(
                     message: $"Unsupported database provider: {dbConfig.DefaultConnection}");
         }
+
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<ApplicationDbContext>());
 
         return services;
     }
