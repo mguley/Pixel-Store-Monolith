@@ -16,15 +16,13 @@ public class Product : BaseEntity
     }
     
     /// <summary>
-    /// Initializes a new instance of the Product class.
+    /// Initializes a new instance of the <see cref="Product"/> class.
     /// </summary>
-    /// <param name="guid">The globally unique identifier for the product.</param>
     /// <param name="name">The name of the product.</param>
     /// <param name="price">The price of the product.</param>
     /// <param name="description">The description of the product.</param>
-    public Product(Guid guid, Name name, Money price, Description description)
+    public Product(Name name, Money price, Description description)
     {
-        Guid = guid;
         Name = name;
         Price = price;
         Description = description;

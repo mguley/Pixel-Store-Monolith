@@ -26,6 +26,9 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItemType>
             .HasColumnName(name: "Id")
             .ValueGeneratedOnAdd();
 
+        builder.Property(orderItem => orderItem.Guid)
+            .HasColumnName(name: "guid");
+
         builder.Property(orderItem => orderItem.OrderId)
             .HasMaxLength(maxLength: 100)
             .HasColumnName(name: "order_id");

@@ -65,7 +65,7 @@ internal sealed class AddressRepository : Repository<Address>, IAddressRepositor
 
         if (address is null)
         {
-            throw new AddressOperationException(message: $"Address with ID {guid} not found.");
+            throw new AddressOperationException(message: $"Address with ID { guid } not found.");
         }
 
         DbContext.Set<Address>().Remove(entity: address);
