@@ -37,10 +37,14 @@ internal static class SeedDataExtensions
     private static async Task GenerateProductsAsync(IServiceProvider service)
     {
         IProductRepository productRepository = service.GetRequiredService<IProductRepository>();
-        IEnumerable<Product> products = GenerateProductData(count: DefaultItemsToGenerate);
-        foreach (Product product in products)
+        bool productsExist = await productRepository.AnyAsync();
+        if (!productsExist)
         {
-            await productRepository.AddAsync(entity: product);
+            IEnumerable<Product> products = GenerateProductData(count: DefaultItemsToGenerate);
+            foreach (Product product in products)
+            {
+                await productRepository.AddAsync(entity: product);
+            }
         }
     }
 
@@ -71,10 +75,14 @@ internal static class SeedDataExtensions
     private static async Task GenerateUsersAsync(IServiceProvider service)
     {
         IUserRepository userRepository = service.GetRequiredService<IUserRepository>();
-        IEnumerable<User> users = GenerateUserData(count: DefaultItemsToGenerate);
-        foreach (User user in users)
+        bool usersExist = await userRepository.AnyAsync();
+        if (!usersExist)
         {
-            await userRepository.AddAsync(entity: user);
+            IEnumerable<User> users = GenerateUserData(count: DefaultItemsToGenerate);
+            foreach (User user in users)
+            {
+                await userRepository.AddAsync(entity: user);
+            }
         }
     }
 
