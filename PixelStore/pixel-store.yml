@@ -16,7 +16,7 @@ services:
       - "7047:7047"
     networks:
       pixel_network:
-        ipv4_address: 217.45.0.3
+        ipv4_address: 217.45.0.2
   
   pixel-store-db:
     container_name: pixel_db
@@ -31,7 +31,17 @@ services:
       - "5432:5432"
     networks:
       pixel_network:
-        ipv4_address: 217.45.0.2
+        ipv4_address: 217.45.0.3
+        
+  pixel-redis:
+    container_name: pixel_redis
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      pixel_network:
+        ipv4_address: 217.45.0.4
         
 networks:
   pixel_network:
