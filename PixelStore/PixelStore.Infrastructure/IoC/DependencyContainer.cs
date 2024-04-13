@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PixelStore.Application.Abstractions.Caching;
 using PixelStore.Domain.Abstractions;
 using PixelStore.Domain.Products;
 using PixelStore.Domain.Users;
+using PixelStore.Infrastructure.Caching;
 using PixelStore.Infrastructure.Exceptions.Application;
 using PixelStore.Infrastructure.Repositories;
 
@@ -27,6 +29,40 @@ public static class DependencyContainer
     /// <exception cref="InvalidOperationException">Thrown when the specified database provider is unsupported.</exception>
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        AddDatabaseConfiguration(services, configuration);
+        AddScopedServices(services);
+        AddCacheServices(services, configuration);
+
+        return services;
+    }
+
+    /// <summary>
+    /// Configures services related to caching, specifically Redis in this context.
+    /// </summary>
+    /// <param name="services">The service collection to configure.</param>
+    /// <param name="configuration">The application's configuration which includes caching settings.</param>
+    /// <exception cref="ApplicationOperationException">Thrown if Redis configuration is not properly provided.</exception>
+    private static void AddCacheServices(IServiceCollection services, IConfiguration configuration)
+    {
+        CacheSettings? cacheSettings = configuration.GetSection(key: "CacheSettings").Get<CacheSettings>();
+        if (cacheSettings is null || string.IsNullOrWhiteSpace(cacheSettings.RedisConfiguration))
+        {
+            throw new ApplicationOperationException(message: "Redis configuration must be specified.");
+        }
+
+        services.AddStackExchangeRedisCache(setupAction: options =>
+            options.Configuration = cacheSettings.RedisConfiguration);
+        services.AddSingleton<ICacheService, RedisCacheService>();
+    }
+
+    /// <summary>
+    /// Adds the database context configurations for the application using the provided configuration settings.
+    /// </summary>
+    /// <param name="services">The services collection to which the database contexts are added.</param>
+    /// <param name="configuration">The application configuration containing connection strings and provider specifications.</param>
+    /// <exception cref="ApplicationOperationException">Thrown if database configuration is not properly provided.</exception>
+    private static void AddDatabaseConfiguration(IServiceCollection services, IConfiguration configuration)
+    {
         DatabaseSettings? dbConfig = configuration.GetSection("DatabaseSettings").Get<DatabaseSettings>();
         if (dbConfig is null || string.IsNullOrWhiteSpace(dbConfig.DefaultConnection))
         {
@@ -45,12 +81,17 @@ public static class DependencyContainer
                 throw new InvalidOperationException(
                     message: $"Unsupported database provider: {dbConfig.DefaultConnection}");
         }
+    }
 
+    /// <summary>
+    /// Registers scoped services for domain-specific repositories.
+    /// </summary>
+    /// <param name="services">The service collection to add services to.</param>
+    private static void AddScopedServices(IServiceCollection services)
+    {
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<ApplicationDbContext>());
-
-        return services;
     }
 
     /// <summary>
