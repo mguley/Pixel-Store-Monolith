@@ -28,6 +28,11 @@ public class Order : BaseEntity
     }
 
     /// <summary>
+    /// Gets the globally unique identifier for an order.
+    /// </summary>
+    public Guid Guid { get; private set; } = Guid.NewGuid();
+
+    /// <summary>
     /// Gets or sets the identifier of the customer who placed the order.
     /// </summary>
     public int CustomerId { get; private set; }

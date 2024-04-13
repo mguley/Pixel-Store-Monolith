@@ -18,12 +18,10 @@ public class Customer : BaseEntity
     /// <summary>
     /// Initializes a new instance of the <see cref="Customer"/> class with specified user details.
     /// </summary>
-    /// <param name="guid">The globally unique identifier for the customer.</param>
     /// <param name="userId">User identifier.</param>
     /// <param name="email">Email address of the customer.</param>
-    public Customer(Guid guid, int? userId, Email email)
+    public Customer(int? userId, Email email)
     {
-        Guid = guid;
         UserId = userId;
         Email = email;
     }

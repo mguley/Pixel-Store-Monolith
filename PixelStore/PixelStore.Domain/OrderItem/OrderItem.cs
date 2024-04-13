@@ -15,6 +15,27 @@ public class OrderItem : BaseEntity
     public OrderItem()
     {
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="OrderItem"/> class with specified order items details.
+    /// </summary>
+    /// <param name="orderId">The ID of the order this item belongs to.</param>
+    /// <param name="productId">The ID of the product being ordered.</param>
+    /// <param name="quantity">The quantity of the product ordered.</param>
+    /// <param name="unitPrice">The price per unit of the product at the time of the order.</param>
+    public OrderItem(int orderId, int productId, Quantity quantity, UnitPrice unitPrice)
+    {
+        OrderId = orderId;
+        ProductId = productId;
+        Quantity = quantity;
+        UnitPrice = unitPrice;
+    }
+
+    /// <summary>
+    /// Gets the globally unique identifier for the order item.
+    /// This identifier is used to uniquely distinguish each order item within the system.
+    /// </summary>
+    public Guid Guid { get; private set; } = Guid.NewGuid();
     
     /// <summary>
     /// Gets or sets the order identifier this item is associated with.
