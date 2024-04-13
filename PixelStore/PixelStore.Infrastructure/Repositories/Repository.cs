@@ -15,7 +15,8 @@ internal abstract class Repository<TEntity> where TEntity : BaseEntity
     /// Initializes a new instance of the <see cref="Repository{TEntity}"/> class.
     /// </summary>
     /// <param name="dbContext">The database context to be used by the repository.</param>
-    protected Repository(ApplicationDbContext dbContext) => DbContext = dbContext;
+    protected Repository(ApplicationDbContext dbContext) =>
+        DbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
 
     /// <summary>
     /// Retrieves all entities of type <typeparamref name="TEntity"/>.
@@ -36,5 +37,15 @@ internal abstract class Repository<TEntity> where TEntity : BaseEntity
     {
         ArgumentNullException.ThrowIfNull(entity);
         await DbContext.AddAsync(entity: entity, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>
+    /// Asynchronously determines whether any entities of type <typeparamref name="TEntity"/> exist in the repository.
+    /// </summary>
+    /// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
+    /// <returns>The task result contains 'true' if any entities exist; otherwise, 'false'.</returns>
+    public virtual async Task<bool> AnyAsync(CancellationToken cancellationToken = default)
+    {
+        return await DbContext.Set<TEntity>().AnyAsync(cancellationToken: cancellationToken);
     }
 }
