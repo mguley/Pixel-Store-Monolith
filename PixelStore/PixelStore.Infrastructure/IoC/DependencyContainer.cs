@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PixelStore.Application.Abstractions;
 using PixelStore.Application.Abstractions.Caching;
 using PixelStore.Domain.Abstractions;
 using PixelStore.Domain.Products;
@@ -32,8 +33,22 @@ public static class DependencyContainer
         AddDatabaseConfiguration(services, configuration);
         AddScopedServices(services);
         AddCacheServices(services, configuration);
+        AddMediatRServices(services);
 
         return services;
+    }
+
+    /// <summary>
+    /// Registers MediatR services using assembly scanning to automatically discover all IRequestHandler implementations
+    /// within the assembly that contains IApplicationEntryPointMarker.
+    /// </summary>
+    /// <param name="services"></param>
+    private static void AddMediatRServices(IServiceCollection services)
+    {
+        services.AddMediatR(configuration: config =>
+        {
+            config.RegisterServicesFromAssemblyContaining<IApplicationEntryPointMarker>();
+        });
     }
 
     /// <summary>
