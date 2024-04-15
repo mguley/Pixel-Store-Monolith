@@ -1,1 +1,4 @@
-GET http://217.45.0.3:5029
+GET http://localhost:5029/users
+
+###
+GET http://localhost:5029/users/id/71d08ea2-25f2-78ce-8e42-e953d579811e
