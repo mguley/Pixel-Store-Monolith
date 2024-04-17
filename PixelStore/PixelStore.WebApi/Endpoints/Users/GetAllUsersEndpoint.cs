@@ -13,9 +13,9 @@ namespace PixelStore.WebApi.Endpoints.Users;
 public class GetAllUsersEndpoint : IEndpoint
 {
     /// <summary>
-    /// Maps the "Get All Users" endpoint to the HTTP GET method.
+    /// Configures the endpoint and maps the corresponding action to a specific HTTP GET route.
     /// </summary>
-    /// <param name="app">Provides the APIs for routing configuration.</param>
+    /// <param name="app">The endpoint route builder used to configure API routes.</param>
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet(pattern: "/", handler: HandleRetrieveUsers)
@@ -32,7 +32,7 @@ public class GetAllUsersEndpoint : IEndpoint
     /// <returns>List that contains the result of handling the request.</returns>
     private async Task<IResult> HandleRetrieveUsers(HttpContext httpContext, [FromServices] ISender sender)
     {
-        var query = new GetAllUsersQuery();
+        GetAllUsersQuery query = new GetAllUsersQuery();
         Result<List<UserResponseDto>> users =
             await sender.Send(request: query, cancellationToken: httpContext.RequestAborted);
 

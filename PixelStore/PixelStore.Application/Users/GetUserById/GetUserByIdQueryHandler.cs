@@ -24,7 +24,7 @@ internal sealed class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery
     }
     
     /// <summary>
-    /// Handles the retrieval of a user by its ID.
+    /// Handles the retrieval of a user by their ID.
     /// </summary>
     /// <param name="request">The query request to retrieve a user, containing the user's ID.</param>
     /// <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
