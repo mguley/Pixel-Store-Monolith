@@ -10,7 +10,7 @@ namespace PixelStore.Infrastructure.Configurations;
 /// <summary>
 /// Configures the entity model for the Order item entity.
 /// </summary>
-public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItemType>
+internal class OrderItemConfiguration : IEntityTypeConfiguration<OrderItemType>
 {
     /// <summary>
     /// Configures the entity model for the Order Item entity using the Fluent API.
