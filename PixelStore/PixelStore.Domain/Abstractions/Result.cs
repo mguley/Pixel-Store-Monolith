@@ -4,7 +4,7 @@ namespace PixelStore.Domain.Abstractions;
 /// Represents a generic result of an operation, encapsulating the outcome's success or failure.
 /// </summary>
 /// <typeparam name="TValue">The type of the value returned by the operation if successful.</typeparam>
-public sealed class Result<TValue>
+public sealed class Result<TValue> : IDomainResult
 {
     /// <summary>
     /// Gets the value produced by the operation if successful.
@@ -14,12 +14,12 @@ public sealed class Result<TValue>
     /// <summary>
     /// Holds the error message if the operation fails.
     /// </summary>
-    private string Error { get; } = string.Empty;
+    public string GetErrorMessage { get; } = string.Empty;
     
     /// <summary>
     /// Indicates whether the operation was successful.
     /// </summary>
-    public bool IsSuccess => string.IsNullOrEmpty(Error);
+    public bool IsSuccess => string.IsNullOrEmpty(GetErrorMessage);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Result{TValue}"/> class for a successful outcome.
@@ -31,5 +31,5 @@ public sealed class Result<TValue>
     /// Initializes a new instance of the <see cref="Result{TValue}"/> class for a failed outcome.
     /// </summary>
     /// <param name="errorMessage">The error message describing the failure.</param>
-    public Result(string errorMessage) => Error = errorMessage;
+    public Result(string errorMessage) => GetErrorMessage = errorMessage;
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PixelStore.Application.Abstractions;
+using PixelStore.Application.Abstractions.Behaviors;
 using PixelStore.Application.Abstractions.Caching;
 using PixelStore.Domain.Abstractions;
 using PixelStore.Domain.Products;
@@ -30,10 +31,10 @@ public static class DependencyContainer
     /// <exception cref="InvalidOperationException">Thrown when the specified database provider is unsupported.</exception>
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        AddDatabaseConfiguration(services, configuration);
-        AddScopedServices(services);
-        AddCacheServices(services, configuration);
-        AddMediatRServices(services);
+        AddDatabaseConfiguration(services: services, configuration: configuration);
+        AddScopedServices(services: services);
+        AddCacheServices(services: services, configuration: configuration);
+        AddMediatRServices(services: services);
 
         return services;
     }
@@ -48,6 +49,7 @@ public static class DependencyContainer
         services.AddMediatR(configuration: config =>
         {
             config.RegisterServicesFromAssemblyContaining<IApplicationEntryPointMarker>();
+            config.AddOpenBehavior(typeof(LoggingBehavior<,>));
         });
     }
 
