@@ -15,7 +15,7 @@ public class GetUserByIdEndpoint : IEndpoint
     /// <summary>
     /// Configures the endpoint and maps the corresponding action to a specific HTTP GET route.
     /// </summary>
-    /// <param name="app">Defines a class that provides the mechanisms to configure an application’s request pipeline.</param>
+    /// <param name="app">The endpoint route builder used to configure API routes.</param>
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet(pattern: "/id/{guid}", handler: HandleRetrieveUserById)
@@ -34,7 +34,7 @@ public class GetUserByIdEndpoint : IEndpoint
     private async Task<IResult> HandleRetrieveUserById(HttpContext httpContext, [FromServices] ISender sender,
         Guid guid)
     {
-        var query = new GetUserByIdQuery(guid: guid);
+        GetUserByIdQuery query = new GetUserByIdQuery(guid: guid);
         Result<UserResponseDto> user = await sender.Send(request: query, cancellationToken: httpContext.RequestAborted);
 
         return user.IsSuccess ? Results.Ok(value: user.Value) : Results.NotFound();

@@ -9,7 +9,7 @@ namespace PixelStore.Infrastructure.Configurations;
 /// <summary>
 /// Configures the entity model for the Customer entity.
 /// </summary>
-public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
+internal class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
     /// <summary>
     /// Configures the entity model for the Customer entity using the Fluent API.

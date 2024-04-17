@@ -8,7 +8,7 @@ namespace PixelStore.Infrastructure.Configurations;
 /// <summary>
 /// Configures the entity model for the Address entity.
 /// </summary>
-public class AddressConfiguration : IEntityTypeConfiguration<Address>
+internal class AddressConfiguration : IEntityTypeConfiguration<Address>
 {
     /// <summary>
     /// Configures the entity model for the Address entity using the Fluent API.

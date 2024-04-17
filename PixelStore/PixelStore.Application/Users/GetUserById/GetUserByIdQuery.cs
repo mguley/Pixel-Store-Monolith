@@ -1,4 +1,4 @@
-using PixelStore.Application.Abstractions.Messaging;
+using PixelStore.Application.Abstractions.Messaging.Query;
 using PixelStore.Application.Users.Shared;
 
 namespace PixelStore.Application.Users.GetUserById;

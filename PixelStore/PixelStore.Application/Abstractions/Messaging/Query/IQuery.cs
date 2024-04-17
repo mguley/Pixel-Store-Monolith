@@ -1,7 +1,7 @@
 using MediatR;
 using PixelStore.Domain.Abstractions;
 
-namespace PixelStore.Application.Abstractions.Messaging;
+namespace PixelStore.Application.Abstractions.Messaging.Query;
 
 /// <summary>
 /// Represents a query in the CQRS pattern execution pipeline that expects a result.

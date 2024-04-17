@@ -1,4 +1,7 @@
 GET http://localhost:5029/users
 
 ###
-GET http://localhost:5029/users/id/71d08ea2-25f2-78ce-8e42-e953d579811e
+GET http://localhost:5029/users/id/e07ea29d-19a9-1858-2482-a3cb30abaf2f
+
+###
+DELETE http://localhost:5029/users/id/c59ba0a4-f6e5-a701-ef14-135deee8a4ab
