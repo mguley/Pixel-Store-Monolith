@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PixelStore.Domain.Users;
 
-namespace PixelStore.Infrastructure.Configurations;
+namespace PixelStore.Infrastructure.EntityTypeConfiguration;
 
 /// <summary>
 /// Configures the entity model for the User entity.

@@ -10,6 +10,7 @@ using PixelStore.Domain.Users;
 using PixelStore.Infrastructure.Caching;
 using PixelStore.Infrastructure.Exceptions.Application;
 using PixelStore.Infrastructure.Repositories;
+using PixelStore.Infrastructure.Settings;
 
 namespace PixelStore.Infrastructure.IoC;
 

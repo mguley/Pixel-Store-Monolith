@@ -5,7 +5,7 @@ using PixelStore.Domain.OrderItem;
 using PixelStore.Domain.Products;
 using OrderItemType = PixelStore.Domain.OrderItem.OrderItem;
 
-namespace PixelStore.Infrastructure.Configurations;
+namespace PixelStore.Infrastructure.EntityTypeConfiguration;
 
 /// <summary>
 /// Configures the entity model for the Order item entity.

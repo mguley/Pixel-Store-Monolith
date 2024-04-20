@@ -1,4 +1,4 @@
-namespace PixelStore.Infrastructure.IoC;
+namespace PixelStore.Infrastructure.Settings;
 
 /// <summary>
 /// Provides configuration settings for cache implementations, particularly Redis.
