@@ -4,7 +4,7 @@ using PixelStore.Domain.Customer;
 using PixelStore.Domain.Users;
 using Email = PixelStore.Domain.Customer.Email;
 
-namespace PixelStore.Infrastructure.Configurations;
+namespace PixelStore.Infrastructure.EntityTypeConfiguration;
 
 /// <summary>
 /// Configures the entity model for the Customer entity.

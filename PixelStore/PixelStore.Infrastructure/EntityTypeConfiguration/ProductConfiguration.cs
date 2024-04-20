@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PixelStore.Domain.Products;
 using PixelStore.Domain.Products.Price;
 
-namespace PixelStore.Infrastructure.Configurations;
+namespace PixelStore.Infrastructure.EntityTypeConfiguration;
 
 /// <summary>
 /// Configures the entity model for the Product entity.

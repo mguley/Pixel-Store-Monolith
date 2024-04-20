@@ -1,4 +1,4 @@
-namespace PixelStore.Infrastructure.IoC;
+namespace PixelStore.Infrastructure.Settings;
 
 /// <summary>
 /// Represents the database settings used for configuring the application's data access layer.
