@@ -23,7 +23,7 @@ internal abstract class Repository<TEntity> where TEntity : BaseEntity
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A collection of all entities.</returns>
-    public virtual async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default)
+    public virtual async Task<IReadOnlyCollection<TEntity>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return await DbContext.Set<TEntity>().AsNoTracking().ToListAsync(cancellationToken: cancellationToken);
     }

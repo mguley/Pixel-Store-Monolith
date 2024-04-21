@@ -15,7 +15,7 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
     /// <returns>A task that represents the asynchronous operation.
     /// The task result contains an IEnumerable of TEntity.
     /// </returns>
-    Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<IReadOnlyCollection<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves an entity by its GUID identifier.
