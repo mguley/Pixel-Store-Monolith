@@ -51,6 +51,7 @@ public static class DependencyContainer
         {
             config.RegisterServicesFromAssemblyContaining<IApplicationEntryPointMarker>();
             config.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            config.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
     }
 
