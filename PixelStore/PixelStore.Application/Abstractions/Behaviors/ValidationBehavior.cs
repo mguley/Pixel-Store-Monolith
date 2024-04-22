@@ -9,8 +9,9 @@ namespace PixelStore.Application.Abstractions.Behaviors;
 
 /// <summary>
 /// A behavior that intercepts handling of command messages to validate them before executing the handler.
+/// This behavior utilizes FluentValidation validators to enforce business rules or data integrity.
 /// </summary>
-/// <typeparam name="TRequest">The type of the command that is being handled, must implement IBaseCommand.</typeparam>
+/// <typeparam name="TRequest">The type of the command that is being handled, must implement <see cref="IBaseCommand"/>.</typeparam>
 /// <typeparam name="TResponse">The type of the response from the handler.</typeparam>
 public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> 
     where TRequest : IBaseCommand
@@ -47,13 +48,18 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
 
         IValidationContext context = new ValidationContext<TRequest>(instanceToValidate: request);
 
+        Func<ValidationResult, bool> filterValidResults = result => result.Errors.Any();
+        Func<ValidationFailure, ValidationError> convertToValidationError = failure =>
+        {
+            return new ValidationError(failure.PropertyName, failure.ErrorMessage);
+        };
+        Func<IValidator<TRequest>, ValidationResult> validate = validator => validator.Validate(context: context);
+
         List<ValidationError> validationResults = _validators
-            .Select((IValidator validator) => validator.Validate(context: context))
-            .Where((ValidationResult validationResult) => validationResult.Errors.Any())
-            .SelectMany((ValidationResult validationResult) => validationResult.Errors)
-            .Select((ValidationFailure validationFailure) => new ValidationError(
-                name: validationFailure.PropertyName,
-                message: validationFailure.ErrorMessage))
+            .Select(selector: validate)
+            .Where(predicate: filterValidResults)
+            .SelectMany(selector: validationResult => validationResult.Errors)
+            .Select(selector: convertToValidationError)
             .ToList();
 
         if (validationResults.Any())
